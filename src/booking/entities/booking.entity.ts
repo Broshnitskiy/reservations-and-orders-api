@@ -1,4 +1,5 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Column, Model, Table, HasMany } from 'sequelize-typescript';
+import { Order } from 'src/order/entities/order.entity';
 
 @Table
 export class Booking extends Model<Booking> {
@@ -13,4 +14,7 @@ export class Booking extends Model<Booking> {
 
   @Column
   pricePerUnit: number;
+
+  @HasMany(() => Order)
+  orders: Order[];
 }
